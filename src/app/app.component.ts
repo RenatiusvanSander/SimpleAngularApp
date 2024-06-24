@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FooterComponent } from './footer/footer.component';
 
 @Component({
@@ -6,14 +6,20 @@ import { FooterComponent } from './footer/footer.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'SimpleAngularApp';
 
   @ViewChild('footer')
   footerComponent!: FooterComponent;
 
+  startTime!: string;
+
   updateLastAccessed() {
     console.log('the previous last accessed value was ' + this.footerComponent.lastAccessed);
     this.footerComponent.lastAccessed = new Date().toString();
+  }
+
+  ngOnInit(): void {
+    this.startTime = new Date().toString();
   }
 }
