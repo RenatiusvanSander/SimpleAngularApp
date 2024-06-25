@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FooterComponent } from './footer/footer.component';
+import { Page2Component } from './page2/page2.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,9 @@ export class AppComponent implements OnInit{
   @ViewChild('footer')
   footerComponent!: FooterComponent;
 
+  @ViewChild('page2')
+  page2Component!: Page2Component;
+
   startTime!: string;
 
   updateLastAccessed() {
@@ -21,5 +25,9 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.startTime = new Date().toString();
+  }
+
+  incrementHitCounter() {
+    this.page2Component.incrementHitCounter();
   }
 }
