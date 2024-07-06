@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit{
   pageRequested:number = 1;
 
   @Output()
-  pageChangedEvent = new EventEmitter();
+  pageChangedEvent = new EventEmitter<number>();
 
   ngOnInit() {
     
@@ -21,6 +21,6 @@ export class HeaderComponent implements OnInit{
   onPageChange(page:number) {
     this.pageRequested = page;
     console.log(this.pageRequested);
-    this.pageChangedEvent.emit();
+    this.pageChangedEvent.emit(page);
   }
 }

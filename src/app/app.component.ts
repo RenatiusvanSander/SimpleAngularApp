@@ -18,6 +18,8 @@ export class AppComponent implements OnInit{
 
   startTime!: string;
 
+  currentPage = 1;
+
   updateLastAccessed() {
     console.log('the previous last accessed value was ' + this.footerComponent.lastAccessed);
     this.footerComponent.lastAccessed = new Date().toString();
@@ -27,7 +29,12 @@ export class AppComponent implements OnInit{
     this.startTime = new Date().toString();
   }
 
-  incrementHitCounter() {
-    this.page2Component.incrementHitCounter();
+  incrementHitCounter(page:number) {
+    this.currentPage = page;
+    console.log('hiz');
+    if( page === 2) {
+      console.log('executed hit counter');
+      this.page2Component.incrementHitCounter();
+    }
   }
 }
