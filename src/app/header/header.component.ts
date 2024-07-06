@@ -21,5 +21,6 @@ export class HeaderComponent implements OnInit{
   onPageChange(page:number) {
     this.pageRequested = page;
     console.log(this.pageRequested);
+    this.pageChangedEvent.emit();
   }
 }
