@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Book } from '../model/Book';
 
 @Component({
   selector: 'app-page1',
@@ -9,14 +10,17 @@ import { DataService } from '../data.service';
 export class Page1Component implements OnInit{
 
   pageName = 'Page 1';
-  private dataService: DataService;
+  books: Array<Book>;
+  dataService: DataService;
 
   constructor(dataService: DataService) {
-    this.dataService = dataService
+    this.dataService = dataService;
+    this.books = new Array<Book>();
   }
 
   ngOnInit() {
     setTimeout( () => { this.pageName = 'First page'}, 5000 );
+    this.books = this.dataService.books;
   }
 
   onButtonClick() {
