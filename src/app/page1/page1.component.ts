@@ -24,6 +24,11 @@ export class Page1Component implements OnInit{
     setTimeout( () => { this.pageName = 'First page'}, 5000 );
     this.books = this.dataService.books;
     this.numberOfBooksWrittenByMatt = this.books.filter(it => it.author === 'Matt').length;
+    this.dataService.bookAddedEvent.subscribe(
+      (newBook) => {
+        // do something here
+      }
+    );
   }
 
   onButtonClick() {
