@@ -12,15 +12,18 @@ export class Page1Component implements OnInit{
   pageName = 'Page 1';
   books: Array<Book>;
   dataService: DataService;
+  numberOfBooksWrittenByMatt: number;
 
   constructor(dataService: DataService) {
     this.dataService = dataService;
     this.books = new Array<Book>();
+    this.numberOfBooksWrittenByMatt = 0;
   }
 
   ngOnInit() {
     setTimeout( () => { this.pageName = 'First page'}, 5000 );
     this.books = this.dataService.books;
+    this.numberOfBooksWrittenByMatt = this.books.filter(it => it.author === 'Matt').length;
   }
 
   onButtonClick() {
