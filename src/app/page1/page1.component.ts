@@ -23,9 +23,14 @@ export class Page1Component implements OnInit{
   ngOnInit() {
     setTimeout( () => { this.pageName = 'First page'}, 5000 );
     this.books = this.dataService.books;
-    this.numberOfBooksWrittenByMatt = this.books.filter(it => it.author === 'Matt').length;
+    this.numberOfBooksWrittenByMatt = this.books.filter(it => it.author === 'matt').length;
     this.dataService.bookAddedEvent.subscribe(
       (newBook) => {
+        if(newBook.author === 'matt') {
+          this.numberOfBooksWrittenByMatt++;
+        }
+      },
+      (error) => {
         // do something here
       }
     );
