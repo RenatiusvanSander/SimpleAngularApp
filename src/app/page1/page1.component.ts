@@ -31,7 +31,10 @@ export class Page1Component implements OnInit{
         }
       },
       (error) => {
-        // do something here
+        console.log('an error occured', error);
+      },
+      () => {
+        // complete event.
       }
     );
   }

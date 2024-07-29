@@ -27,4 +27,12 @@ export class FooterComponent implements OnInit {
     book.price = 23.45;
     this.dataService.addBook(book);
   }
+
+  addABook2() {
+    const book: Book = new Book();
+    book.author = 'james';
+    book.title = 'Not in the mirror';
+    book.price = 23.45;
+    this.dataService.addBook(book);
+  }
 }
