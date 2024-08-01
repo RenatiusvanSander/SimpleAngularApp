@@ -16,12 +16,14 @@ export class Page1Component implements OnInit, OnDestroy{
   numberOfBooksWrittenByMatt: number;
 
   subscription: Subscription;
+  subscription2: Subscription();
 
   constructor(dataService: DataService) {
     this.dataService = dataService;
     this.books = new Array<Book>();
     this.numberOfBooksWrittenByMatt = 0;
     this.subscription = new Subscription();
+    this.subscription2 = new Subscription();
   }
 
   ngOnInit() {

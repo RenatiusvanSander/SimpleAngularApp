@@ -15,9 +15,7 @@ export class Page3Component implements OnInit{
   }
 
   deleteLastBook() {
-    if(this.dataService.books.length > 0) {
-      this.dataService.books.pop();
-    }
+    this.dataService.deleteBook();
   }
 
   ngOnInit() {
