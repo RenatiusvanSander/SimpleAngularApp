@@ -43,6 +43,7 @@ export class DataService {
   deleteBook() {
     if(this.books.length > 0) {
       const book = this.books.pop();
+      console.log(book);
       this.bookDeletedEvent.emit(book);
     } else {
       this.bookDeletedEvent.error('Thereare no books to delete from.');
