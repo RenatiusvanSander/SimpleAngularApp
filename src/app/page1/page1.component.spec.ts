@@ -31,4 +31,15 @@ describe('Page1Component', () => {
     dataService.addBook(book);
     expect(component.numberOfBooksWrittenByMatt).toEqual(startValue + 1);
   });
+
+  it('Number of books written by Matt is incremented correctly version 2', () => {
+    const startValue = component.numberOfBooksWrittenByMatt;
+    const book = new Book();
+    book.author = 'matt';
+    const dataService = new DataService();
+    component = new Page1Component(dataService);
+    component.ngOnInit();
+    dataService.addBook(book);
+    expect(component.numberOfBooksWrittenByMatt).toEqual(startValue + 1);
+  });
 });
