@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Page1Component } from './page1.component';
 import { DataService } from '../data.service';
 import { Book } from '../model/Book';
+import { MockDataService } from '../mocks/MockDataService';
 
 describe('Page1Component', () => {
   let component: Page1Component;
@@ -10,7 +10,8 @@ describe('Page1Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Page1Component]
+      declarations: [Page1Component],
+      providers: [{provide: 'DataServiceInterface', useExisting : DataService}],
     })
     .compileComponents();
     
@@ -33,10 +34,21 @@ describe('Page1Component', () => {
   });
 
   it('Number of books written by Matt is incremented correctly version 2', () => {
-    const startValue = component.numberOfBooksWrittenByMatt;
     const book = new Book();
     book.author = 'matt';
     const dataService = new DataService();
+    component = new Page1Component(dataService);
+    component.ngOnInit();
+    const startValue = component.numberOfBooksWrittenByMatt;
+    dataService.addBook(book);
+    expect(component.numberOfBooksWrittenByMatt).toEqual(startValue + 1);
+  });
+
+  it('Number of books written by Matt is incremented correctly version 3', () => {
+    const startValue = component.numberOfBooksWrittenByMatt;
+    const book = new Book();
+    book.author = 'matt';
+    const dataService = new MockDataService();
     component = new Page1Component(dataService);
     component.ngOnInit();
     dataService.addBook(book);

@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { DataServiceInterface } from '../data.service';
 import { Book } from '../model/Book';
 import { Subscription } from 'rxjs';
 
@@ -12,13 +12,13 @@ export class Page1Component implements OnInit, OnDestroy{
 
   pageName = 'Page 1';
   books: Array<Book>;
-  dataService: DataService;
+  dataService: DataServiceInterface;
   numberOfBooksWrittenByMatt: number;
 
   subscription: Subscription;
   subscription2: Subscription;
 
-  constructor(dataService: DataService) {
+  constructor(@Inject('DataServiceInterface') dataService: DataServiceInterface) {
     this.dataService = dataService;
     this.books = new Array<Book>();
     this.numberOfBooksWrittenByMatt = 0;

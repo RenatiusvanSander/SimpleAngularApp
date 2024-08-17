@@ -6,6 +6,7 @@ import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
 import { Page3Component } from './page3/page3.component';
 import { FooterComponent } from './footer/footer.component';
+import { DataService } from './data.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -16,6 +17,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent, HeaderComponent, Page1Component, Page2Component, Page3Component, FooterComponent
       ],
+      providers: [{provide: 'DataServiceInterface', useExisting : DataService}],
     }).compileComponents();
   });
 
